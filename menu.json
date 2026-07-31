@@ -1,0 +1,111 @@
+{
+  "restaurant": {
+    "name": "The Blue Sapphire",
+    "subTitle": "Multi-Cuisine Restaurant",
+    "openHours": "24x7 Open",
+    "hotel": "Hotel Laxmi Vilas Palace",
+    "address": "dighi kala(east) mahavir chauraha (Mahua more), Hajipur, Vaishali - 844101 (Bihar)",
+    "phone": ["+91 99557 45119", "+91 99554 07888"],
+    "email": "palacelaxmivilas@gmail.com",
+    "specialTag": "Shravan Special Menu",
+    "dietaryInfo": "100% Pure Veg | No Onion | No Garlic",
+    "disclaimer": "All rates are in INR and exclusive of applicable GST.",
+    "logo": "restaurant/logo.png",
+    "cover": "restaurant/cover.jpg"
+  },
+  "categories": [
+    {
+      "id": "soup",
+      "name": "Soup",
+      "icon": "🍲",
+      "image": "restaurant/soup.jpg",
+      "description": "Warm & comforting freshly prepared aromatic soups",
+      "items": [
+        { "name": "Cream Of Vegetable Soup", "price": 155, "description": "Rich & creamy blend of fresh garden vegetables", "badge": "Popular" },
+        { "name": "Cream Of Tomato", "price": 155, "description": "Classic smooth tomato soup with ripe tomatoes and herbs" },
+        { "name": "Cream Of Mushroom Soup", "price": 165, "description": "Velvety earthy mushroom soup served hot" },
+        { "name": "Vegitable Noodle Soup", "price": 170, "description": "Clear aromatic soup loaded with soft noodles and tender veggies" },
+        { "name": "Sweet Corn Vegetable Soup", "price": 155, "description": "Sweet corn broth cooked with finely chopped vegetables", "badge": "Chef Special" },
+        { "name": "Vegetable Clear Soup", "price": 135, "description": "Light, soothing healthy broth infused with fresh seasonal greens" }
+      ]
+    },
+    {
+      "id": "indian-starter",
+      "name": "Indian Starter",
+      "icon": "🍢",
+      "description": "Tandoori delicacies & crispy starters marinated with authentic spices",
+      "items": [
+        { "name": "Paneer Mukhmali Tikka", "price": 395, "description": "Melt-in-mouth cottage cheese marinated in cream and delicate spices", "badge": "Best Seller" },
+        { "name": "Paneer Keshariya Tikka", "price": 410, "description": "Royal paneer cubes infused with saffron & grilled to perfection" },
+        { "name": "Corn Paneer Butter Fry", "price": 370, "description": "Golden crisp paneer & corn tossed in rich aromatic butter" },
+        { "name": "Paneer Kurkure", "price": 360, "description": "Crispy crunchy paneer sticks served with tangy dip" },
+        { "name": "Stuffed Tandoori Mushroom", "price": 410, "description": "Juicy mushrooms filled with spiced paneer mixture & clay oven roasted" },
+        { "name": "Stuffed Tandoori Aloo", "price": 240, "description": "Scooped potato shells filled with spiced nuts & paneer" },
+        { "name": "Ajwaini Baby Corn Tandoori", "price": 365, "description": "Tender baby corn flavored with carom seeds and char-grilled" }
+      ]
+    },
+    {
+      "id": "chinese-starter",
+      "name": "Chinese Starter",
+      "icon": "🥢",
+      "description": "Indo-Chinese crunchy & flavorful starter bites",
+      "items": [
+        { "name": "Honey Chilli Potato", "price": 235, "description": "Crispy potato fries glazed in sweet honey and spicy chili sauce", "badge": "Favorite" },
+        { "name": "Corn Cheese Ball", "price": 335, "description": "Deep-fried golden spheres bursting with melted cheese and sweet corn" },
+        { "name": "Gobhi 65 Dry", "price": 265, "description": "Crispy cauliflower florets tossed in South-Asian style 65 spices" },
+        { "name": "Cheese Cherry Pineapple", "price": 275, "description": "Classic sweet & savory cocktail skewers with cheese, cherry, pineapple" }
+      ]
+    },
+    {
+      "id": "main-course",
+      "name": "Main Course - Curries",
+      "icon": "🥘",
+      "image": "restaurant/curry.jpg",
+      "description": "Sumptuous Satvik gravies & paneer specialties",
+      "items": [
+        { "name": "Paneer Baby Corn", "price": 395, "description": "Soft paneer cubes and crunchy baby corn in luscious rich gravy" },
+        { "name": "Paneer Makhani", "price": 395, "description": "Rich tomato butter sauce cooked with soft paneer cubes", "badge": "Must Try" },
+        { "name": "Paneer Pitambri", "price": 395, "description": "Yellow golden rich spiced curry with velvety cottage cheese" },
+        { "name": "Mushroom Jaipuri", "price": 395, "description": "Fresh mushrooms cooked in authentic Rajasthani spiced gravy" },
+        { "name": "Paneer Lazeez", "price": 395, "description": "Exquisite gravy loaded with paneer and rich dry fruit paste" },
+        { "name": "Paneer Kalimirch Masala", "price": 410, "description": "Peppery aromatic paneer gravy simmered with fresh crushed black pepper" },
+        { "name": "Paneer Adraki Masala", "price": 415, "description": "Ginger-infused thick spicy curry with juicy paneer blocks" },
+        { "name": "Paneer Reshmi Masala", "price": 415, "description": "Silky smooth cashew and cream gravy with tender paneer" },
+        { "name": "Shahi Paneer (Red/White)", "price": 395, "description": "Royal Mughlai paneer dish available in creamy tomato red or cashew white gravy" },
+        { "name": "Navratn Korma", "price": 325, "description": "Nine-gem mild curry made with vegetables, paneer, and dry fruits" },
+        { "name": "Methi Mutter Malai", "price": 350, "description": "Fresh fenugreek leaves and green peas simmered in rich sweet cream" },
+        { "name": "Vegetable Makhani", "price": 305, "description": "Assorted garden vegetables in butter tomato gravy" },
+        { "name": "Malai Kofta", "price": 345, "description": "Stuffed paneer dumplings soaked in cream-rich golden sauce" },
+        { "name": "Kashmiri Dum Aloo", "price": 345, "description": "Slow-cooked stuffed potatoes in authentic Kashmiri spice gravy" },
+        { "name": "Dal Makhana", "price": 175, "description": "Slow-cooked black lentils simmered overnight with butter and fresh cream", "badge": "Classic" },
+        { "name": "Panchratan Dal", "price": 195, "description": "Nutritious traditional blend of five lentils tempered with pure ghee" }
+      ]
+    },
+    {
+      "id": "roti-rice",
+      "name": "Roti & Rice",
+      "icon": "🫓",
+      "description": "Clay oven breads, saffron pulao & aromatic rice specialties",
+      "items": [
+        { "name": "Khasta Roti", "price": 55, "description": "Crispy flaky tandoori whole wheat flatbread" },
+        { "name": "Reshmi Paratha", "price": 110, "description": "Soft layered Indian flatbread shallow fried in ghee" },
+        { "name": "Lachha Naan", "price": 90, "description": "Multi-layered tandoori naan bread buttered generously" },
+        { "name": "Ghee Rice", "price": 220, "description": "Fragrant basmati rice tossed in pure desi ghee" },
+        { "name": "Corn Fried Rice", "price": 245, "description": "Aromatic fried rice with crunchy sweet corn and veggies" },
+        { "name": "Saffron Pulao", "price": 260, "description": "Royal basmati rice cooked with saffron strands and aromatic whole spices", "badge": "Special" }
+      ]
+    },
+    {
+      "id": "dessert",
+      "name": "Dessert",
+      "icon": "🍨",
+      "description": "Sweet treats & chilled delights to end your meal",
+      "items": [
+        { "name": "Fried Ice Cream", "price": 245, "description": "Warm crispy fried shell encapsulating frozen vanilla ice cream", "badge": "Signature" },
+        { "name": "Fruit Custard", "price": 175, "description": "Chilled smooth custard with chopped seasonal fruits" },
+        { "name": "Sizzling Brownie With Ice Cream", "price": 240, "description": "Hot chocolate brownie served sizzling with vanilla ice cream and fudge" },
+        { "name": "Pan Fried Honey Noodles With Ice Cream", "price": 225, "description": "Crispy pan-fried noodles coated in honey and sesame seeds, served with vanilla ice cream" }
+      ]
+    }
+  ]
+}

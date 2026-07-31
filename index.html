@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>The Blue Sapphire - Shravan Special Menu | Hotel Laxmi Vilas Palace</title>
+    <meta name="description"
+        content="Explore The Blue Sapphire Shravan Special Menu - Pure Vegetarian, No Onion, No Garlic Multi-Cuisine Delicacies in Hajipur, Vaishali.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #071e16;
+            --bg-card: rgba(14, 43, 31, 0.88);
+            --bg-card-hover: rgba(22, 61, 44, 0.96);
+            --border-gold: #d4af37;
+            --border-gold-light: #f3e5ab;
+            --accent-green: #2d6a4f;
+            --accent-light-green: #52b788;
+            --text-gold: #e5c158;
+            --text-main: #f0f7f4;
+            --text-muted: #a3b18a;
+            --veg-green: #2e7d32;
+            --shadow-gold: 0 4px 20px rgba(212, 175, 55, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            background-image:
+                radial-gradient(circle at 50% 0%, rgba(45, 106, 79, 0.35) 0%, transparent 70%),
+                radial-gradient(circle at 10% 40%, rgba(18, 53, 38, 0.6) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(13, 38, 27, 0.7) 0%, transparent 60%);
+        }
+
+        /* Canvas background for rain */
+        #rainCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Savan Theme Header Banner */
+        .savan-banner {
+            background: linear-gradient(135deg, rgba(14, 43, 31, 0.92), rgba(6, 26, 18, 0.96)),
+                url('restaurant/cover.jpg') center/cover no-repeat;
+            background-blend-mode: overlay;
+            border: 1.5px solid var(--border-gold);
+            border-radius: 16px;
+            padding: 24px 16px;
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), var(--shadow-gold);
+            backdrop-filter: blur(8px);
+            overflow: hidden;
+        }
+
+        .savan-banner::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 12px;
+            pointer-events: none;
+        }
+
+        .monsoon-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(45, 106, 79, 0.7);
+            border: 1px solid var(--border-gold);
+            color: var(--text-gold);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 12px;
+            box-shadow: 0 0 12px rgba(229, 193, 88, 0.2);
+            animation: pulse-glow 3s infinite alternate;
+        }
+
+        @keyframes pulse-glow {
+            0% {
+                box-shadow: 0 0 6px rgba(229, 193, 88, 0.2);
+            }
+
+            100% {
+                box-shadow: 0 0 16px rgba(229, 193, 88, 0.5);
+            }
+        }
+
+        .logo-img {
+            width: 76px;
+            height: 76px;
+            border-radius: 50%;
+            border: 2px solid var(--border-gold);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            margin-bottom: 10px;
+            object-fit: cover;
+            background: #fff;
+        }
+
+        .restaurant-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.6rem, 5vw, 2.6rem);
+            color: var(--text-gold);
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+            margin-bottom: 4px;
+            line-height: 1.2;
+        }
+
+        .restaurant-subtitle {
+            font-size: clamp(0.85rem, 2.5vw, 1.1rem);
+            color: var(--accent-light-green);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .satvik-tag {
+            display: inline-block;
+            background: rgba(46, 125, 50, 0.3);
+            border: 1px dashed var(--accent-light-green);
+            color: #d8f3dc;
+            padding: 6px 14px;
+            border-radius: 25px;
+            font-size: clamp(0.8rem, 2.2vw, 0.95rem);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .hotel-info {
+            font-size: clamp(0.8rem, 2.2vw, 0.9rem);
+            color: var(--text-muted);
+            line-height: 1.5;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .hotel-info span {
+            color: var(--text-gold);
+            word-break: break-word;
+        }
+
+        /* Controls & Filter Bar */
+        .controls-bar {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background: rgba(14, 43, 31, 0.85);
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            border-radius: 14px;
+            padding: 14px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(6px);
+        }
+
+        .controls-top {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .search-box input {
+            width: 100%;
+            height: 44px;
+            padding: 10px 14px 10px 42px;
+            background: rgba(7, 30, 22, 0.85);
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            border-radius: 22px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            border-color: var(--border-gold);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .search-box svg {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            fill: var(--text-gold);
+            width: 18px;
+            height: 18px;
+        }
+
+        .view-options {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toggle-btn {
+            height: 44px;
+            background: rgba(7, 30, 22, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            color: var(--text-gold);
+            padding: 0 14px;
+            border-radius: 22px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .toggle-btn:active {
+            transform: scale(0.97);
+        }
+
+        .category-tabs {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+            width: 100%;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .category-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab-btn {
+            height: 38px;
+            background: rgba(7, 30, 22, 0.7);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            color: var(--text-main);
+            padding: 0 14px;
+            border-radius: 19px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
+        .tab-btn:hover,
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--accent-green), #1b4332);
+            border-color: var(--border-gold);
+            color: var(--text-gold);
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Menu Section & Cards */
+        .category-section {
+            margin-bottom: 30px;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.35);
+            padding-bottom: 8px;
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .category-header::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 70px;
+            height: 2px;
+            background: var(--border-gold);
+            box-shadow: 0 0 8px var(--border-gold);
+        }
+
+        .category-icon {
+            font-size: 1.5rem;
+        }
+
+        .category-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+            color: var(--text-gold);
+            letter-spacing: 0.5px;
+        }
+
+        .category-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-left: auto;
+            display: none;
+        }
+
+        @media (min-width: 600px) {
+            .category-desc {
+                display: block;
+            }
+        }
+
+        .category-banner-img {
+            width: 100%;
+            max-height: 130px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid var(--border-gold);
+            margin-bottom: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Grid View */
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 14px;
+        }
+
+        .menu-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 12px;
+            padding: 14px 16px;
+            transition: all 0.25s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            backdrop-filter: blur(4px);
+        }
+
+        .menu-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), 0 0 8px rgba(212, 175, 55, 0.2);
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+
+        .item-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            line-height: 1.35;
+        }
+
+        .veg-dot {
+            width: 14px;
+            height: 14px;
+            border: 1.5px solid #2e7d32;
+            padding: 2px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .veg-dot::after {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: #2e7d32;
+            border-radius: 50%;
+        }
+
+        .item-price {
+            font-family: 'Cinzel', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-gold);
+            white-space: nowrap;
+        }
+
+        .item-desc {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .card-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 6px;
+            padding-top: 6px;
+        }
+
+        .item-badge {
+            background: rgba(229, 193, 88, 0.15);
+            border: 1px solid var(--border-gold);
+            color: var(--text-gold);
+            font-size: 0.72rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 500;
+        }
+
+        /* Classic Menu Card Mode */
+        .classic-view .items-grid {
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 640px) {
+            .classic-view .items-grid {
+                grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+            }
+        }
+
+        .classic-view .menu-card {
+            border: 1px solid var(--border-gold);
+            background: linear-gradient(145deg, rgba(14, 43, 31, 0.95), rgba(7, 26, 18, 0.95));
+            border-radius: 8px;
+            padding: 14px 18px;
+        }
+
+        .classic-view .menu-card::before {
+            content: '❖';
+            position: absolute;
+            top: 4px;
+            left: 5px;
+            color: var(--border-gold);
+            font-size: 0.65rem;
+            opacity: 0.5;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 24px 16px;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            margin-top: 30px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        footer p {
+            margin-bottom: 4px;
+        }
+
+        /* Media queries for fine-tuned responsiveness */
+        @media (min-width: 768px) {
+            .container {
+                padding: 24px;
+            }
+
+            .controls-bar {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .savan-banner {
+                padding: 35px 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Rain canvas animation -->
+    <canvas id="rainCanvas"></canvas>
+
+    <div class="container">
+        <!-- Savan Special Header Banner -->
+        <header class="savan-banner">
+            <div class="monsoon-badge">
+                🌧️ Savan Special Menu 🌧️
+            </div>
+            <div>
+                <img src="restaurant/logo.png" alt="The Blue Sapphire Logo" class="logo-img">
+            </div>
+            <h1 class="restaurant-title">THE BLUE SAPPHIRE</h1>
+            <div class="restaurant-subtitle">MULTI-CUISINE RESTAURANT (24x7)</div>
+
+            <div class="satvik-tag">
+                🌱 100% Pure Veg | No Onion | No Garlic
+            </div>
+
+            <div class="hotel-info">
+                <strong>Hotel Laxmi Vilas Palace</strong><br>
+                📍 <span>dighi kala(east) mahavir chauraha (Mahua more), Hajipur, Vaishali - 844101 (Bihar)</span><br>
+                📞 <span>+91 99557 45119 / +91 99554 07888</span> | ✉️ <span>palacelaxmivilas@gmail.com</span>
+            </div>
+        </header>
+
+        <!-- Search, Filter & View Controls -->
+        <div class="controls-bar">
+            <div class="controls-top">
+                <div class="search-box">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+                    </svg>
+                    <input type="text" id="searchInput" placeholder="Search dishes (e.g. Paneer, Soup, Tikka)...">
+                </div>
+
+                <div class="view-options">
+                    <button class="toggle-btn" id="viewToggleBtn" aria-label="Toggle Menu Layout View">
+                        <span>📱 Grid View</span>
+                    </button>
+                    <button class="toggle-btn" id="rainToggleBtn" aria-label="Toggle Rain Effect">
+                        <span>🌧️ Rain: ON</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="category-tabs" id="categoryTabs">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+
+        <!-- Menu Content Container -->
+        <main id="menuContainer">
+            <div style="text-align: center; padding: 40px; color: var(--text-gold);">
+                Loading Shravan Special Menu...
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p><strong>The Blue Sapphire Multi-Cuisine Restaurant</strong></p>
+            <p>Hotel Laxmi Vilas Palace</p>
+            <p>📍 dighi kala(east) mahavir chauraha (Mahua more), Hajipur, Vaishali - 844101 (Bihar)</p>
+            <p style="color: var(--text-gold); margin-top: 8px;">All rates are in INR and exclusive of applicable GST.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Global State
+        let menuData = null;
+        let activeCategory = 'all';
+        let isRainActive = true;
+
+        // Rain Animation Canvas Effect
+        const canvas = document.getElementById('rainCanvas');
+        const ctx = canvas.getContext('2d');
+        let raindrops = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Raindrop {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * -canvas.height;
+                this.length = Math.random() * 18 + 8;
+                this.speed = Math.random() * 4 + 8;
+                this.opacity = Math.random() * 0.35 + 0.1;
+            }
+
+            update() {
+                this.y += this.speed;
+                if (this.y > canvas.height) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.moveTo(this.x, this.y);
+                ctx.lineTo(this.x, this.y + this.length);
+                ctx.strokeStyle = `rgba(174, 217, 224, ${this.opacity})`;
+                ctx.lineWidth = 1.2;
+                ctx.stroke();
+            }
+        }
+
+        // Initialize Raindrops (Mobile optimized count)
+        const dropCount = window.innerWidth < 600 ? 50 : 100;
+        for (let i = 0; i < dropCount; i++) {
+            raindrops.push(new Raindrop());
+        }
+
+        function animateRain() {
+            if (isRainActive) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                raindrops.forEach(drop => {
+                    drop.update();
+                    drop.draw();
+                });
+            } else {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+            requestAnimationFrame(animateRain);
+        }
+
+        animateRain();
+
+        // Rain Toggle Button
+        document.getElementById('rainToggleBtn').addEventListener('click', () => {
+            isRainActive = !isRainActive;
+            document.getElementById('rainToggleBtn').innerHTML = isRainActive ? '<span>🌧️ Rain: ON</span>' : '<span>☀️ Rain: OFF</span>';
+        });
+
+        // View Mode Toggle (Grid vs Classic)
+        let isClassicView = false;
+        document.getElementById('viewToggleBtn').addEventListener('click', () => {
+            isClassicView = !isClassicView;
+            const container = document.getElementById('menuContainer');
+            if (isClassicView) {
+                container.classList.add('classic-view');
+                document.getElementById('viewToggleBtn').innerHTML = '<span>📜 Menu View</span>';
+            } else {
+                container.classList.remove('classic-view');
+                document.getElementById('viewToggleBtn').innerHTML = '<span>📱 Grid View</span>';
+            }
+        });
+
+        // Fetch menu.json data
+        async function fetchMenu() {
+            try {
+                const response = await fetch('menu.json');
+                menuData = await response.json();
+                renderCategoryTabs();
+                renderMenu();
+            } catch (err) {
+                console.error("Error loading menu:", err);
+                document.getElementById('menuContainer').innerHTML = `<p style="color: red; text-align: center;">Failed to load menu.json.</p>`;
+            }
+        }
+
+        // Render Category Tabs
+        function renderCategoryTabs() {
+            const tabsContainer = document.getElementById('categoryTabs');
+            tabsContainer.innerHTML = `
+                <button class="tab-btn active" onclick="setCategory('all', this)">🌿 All Items</button>
+            `;
+
+            menuData.categories.forEach(cat => {
+                const btn = document.createElement('button');
+                btn.className = 'tab-btn';
+                btn.onclick = (e) => setCategory(cat.id, e.currentTarget);
+                btn.innerHTML = `${cat.icon} ${cat.name}`;
+                tabsContainer.appendChild(btn);
+            });
+        }
+
+        function setCategory(catId, element) {
+            activeCategory = catId;
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            if (element) {
+                element.classList.add('active');
+                element.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
+            renderMenu();
+        }
+
+        // Render Menu Items
+        function renderMenu() {
+            const container = document.getElementById('menuContainer');
+            const searchKeyword = document.getElementById('searchInput').value.toLowerCase().trim();
+
+            let html = '';
+
+            menuData.categories.forEach(cat => {
+                if (activeCategory !== 'all' && activeCategory !== cat.id) return;
+
+                // Filter items by search
+                const filteredItems = cat.items.filter(item =>
+                    item.name.toLowerCase().includes(searchKeyword) ||
+                    (item.description && item.description.toLowerCase().includes(searchKeyword))
+                );
+
+                if (filteredItems.length === 0) return;
+
+                html += `
+                    <section class="category-section" id="cat-${cat.id}">
+                        <div class="category-header">
+                            <span class="category-icon">${cat.icon}</span>
+                            <h2 class="category-title">${cat.name}</h2>
+                            <span class="category-desc">${cat.description || ''}</span>
+                        </div>
+                `;
+
+                if (cat.image) {
+                    html += `<img src="${cat.image}" alt="${cat.name}" class="category-banner-img">`;
+                }
+
+                html += `<div class="items-grid">`;
+
+                filteredItems.forEach(item => {
+                    html += `
+                        <div class="menu-card">
+                            <div class="card-top">
+                                <div class="item-name">
+                                    <span class="veg-dot" title="100% Pure Veg / No Onion No Garlic"></span>
+                                    ${item.name}
+                                </div>
+                                <div class="item-price">₹${item.price}</div>
+                            </div>
+                            ${item.description ? `<p class="item-desc">${item.description}</p>` : ''}
+                            ${item.badge ? `
+                                <div class="card-bottom">
+                                    <span class="item-badge">${item.badge}</span>
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                });
+
+                html += `</div></section>`;
+            });
+
+            if (html === '') {
+                html = `<div style="text-align: center; padding: 40px; color: var(--text-muted);">No dishes found matching "${searchKeyword}".</div>`;
+            }
+
+            container.innerHTML = html;
+        }
+
+        // Search Input Listener
+        document.getElementById('searchInput').addEventListener('input', renderMenu);
+
+        // Load Menu on DOM Ready
+        document.addEventListener('DOMContentLoaded', fetchMenu);
+    </script>
+</body>
+
+</html>
